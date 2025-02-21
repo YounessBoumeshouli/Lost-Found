@@ -8,11 +8,13 @@ use Illuminate\Http\Request;use PHPUnit\Util\PHP\Job;
 class userController extends Controller
 {
     public function index(){
-        $users = User::all();
-        return view('users', ['users' => $users]);
+
+        return view('home');
     }
     public function create(Request $request){
-
+        $name = $request->input('name');
+        $email = $request->input('email');
+    User::create($request);
 
     }
     public function delete(string $id){
@@ -36,6 +38,5 @@ class userController extends Controller
     $user->update($request->all());
 
     return view('user', ['user' => $user]);
-
     }
 }
